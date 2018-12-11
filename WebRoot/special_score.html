@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.form.js"></script>
+    <script type="text/javascript" src="./js/jQuery_Raty.js"></script>
+<style>
+#picForm{
+  font-size: 12px;
+      color: #333;
+}
+#function-demo{
+          display: inline-block;
+}
+#function-demo{
+          *display:inline;
+}
+.demo{
+      width: 396px;
+}
+#function-hint{
+      float: right;
+}
+.pin{
+    margin-left: 40px;
+    position: relative;
+    bottom: -2px;
+    margin-right: 6px;
+}
+.yijian{
+  position: relative;
+bottom: 98px;
+margin-right: 6px;
+margin-left: 4px;
+}
+.xinxi{
+  margin-left: 17px;
+  margin-right: 6px;
+}
+#tijiao{
+      width: 176px;
+          font-size: 12px;
+              display: inline;
+}
+#function-hint{
+    font-size: 13px;
+    position: relative;
+    top: 2px;
+    left: -23px;
+    width: 66px;
+    text-align: center;
+*left:-80px;
+*top:-23px;
+}
+#tijiaonn{
+  display: block;
+margin-left: 216px;
+width: 66px;
+background: #5BC0DE;
+border-radius: 4px;
+color: #fff;
+    margin-top: 15px;
+        border: 0;
+            height: 23px;
+}
+#wbk{
+      margin: 10px 0;
+}
+.modal-header{    text-align: center;}
+</style>
+  </head>
+  
+  <script>
+  	$(function() {
+       $.fn.raty.defaults.path = 'lib/img';
+	    $('#function-demo').raty({
+	        number: 5, //多少个星星设置
+	        targetType: 'hint', //类型选择，number是数字值，hint，是设置的数组值
+	        path: 'images',
+	        hints: ['1分', '2分', '3分', '4分', '5分'],
+	        cancelOff: 'cancel-off-big.png',
+	        cancelOn: 'cancel-on-big.png',
+	        size: 30,   //宽度
+	        starHalf: 'star-half-big.png',
+	        starOff: 'star-off-big.png',
+	        starOn: 'star-on-big.png',
+	        target: '#function-hint',
+	        cancel: false,
+	        targetKeep: true,
+	        targetText: '请选择评分',
+	        click: function(score, evt) {
+	            //alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt.type);
+	            //alert(score);
+	            //$(".score").val(score);
+	        }
+	      });    
+    });
+  
+    function updataFile(){
+    $(".specId").val($(".message").attr("id"));
+        // 提交表单  
+        $("#picForm").ajaxSubmit({  
+            url : "./mgr/specialScore/saveSpecialscoreInfo", // 请求的url  
+            type : "post", // 请求方式  
+            dataType : "json", // 响应的数据类型  
+            async :true, // 异步  
+            success: function (data) {  
+            	alert(data.body);
+            	if(data.body=="提交成功"){
+            		window.location.href = "specil_list.html";
+            	}
+            },  
+            error : function(){  
+                alert("数据加载失败！");  
+            }  
+        });  
+    }
+    
+    
+  </script>
+  <body>
+    <form id="picForm" action="./mgr/specialScore/saveSpecialscoreInfo" method="post" enctype="multipart/form-data">
+    	<input type="hidden" class="specId" name="specId">
+    	
+			  <div class="demo">
+			  <b class="pin">评分:</b><div style="width:500px;display: inline;">
+			    <div id="function-demo" class="target-demo"></div>
+			    <div id="function-hint" class="hint"></div>
+			  </div>
+			</div>
+    	<b class="yijian">意见及建议:</b><textarea id="wbk" style="width:300px;height: 110px;resize:none;" name="opinion"></textarea><br>
+    	<b class="xinxi">信息记录:</b><input id="tijiao" type="file" name="infoimg">(jpg、png)
+    	<input id="tijiaonn" type="button" onclick="updataFile()" value="提交">
+    </form>
+  </body>
+</html>

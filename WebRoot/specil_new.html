@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+        <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css" />
+		<link type="text/css" rel="stylesheet" href="./css/bootstrap-dialog.min.css">
+        <link type="text/css" rel="stylesheet" href="./css/commone.css" />
+        <link href="./imageupload/css/syzStyle.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="./imageupload/css/webuploader.css" />
+		<script src="./imageupload/js/jquery-1.11.2.min.js"></script>
+		<script src="./imageupload/js/jquery.validate.min.js"></script>
+		<script src="./imageupload/js/messages_zh.js"></script>
+		<script type="text/javascript" src="./imageupload/dist/webuploader.js"></script>
+        <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="./js/jquery.form.js"></script>
+        <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./js/bootstrap-dialog.min.js"></script>
+        <script type="text/javascript" src="./js/bootstrap-pagy.min.js"></script>
+        <script type="text/javascript" src="./js/common.js"></script>
+        <script type="text/javascript" src="./js/special_info.js"></script> 
+        <script type="text/javascript" src="./js/plugins/my97datepicker/WdatePicker.js"></script> 
+        <!--[if lt IE 9]>
+            <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]--> 
+    </head>
+    <body>
+        <div class="nav navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+               <a href="./index.html" class="navbar-brand"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a>
+               <ul class="nav navbar-nav" id="nav-box-ul"></ul>
+               <ul class="nav navbar-nav pull-right">
+               		<li><a href="javascript:void(0)" class="acctInfo" data-toggle="modal" ><span class="glyphicon glyphicon-user"></span>&nbsp;</a></li>
+                	<li><a href="javascript:void(0)" onclick="exit()">注销</a></li>
+               </ul>
+            </div>
+        </div>
+        <div class="container main hide">
+        	<div class="row">
+	      		<ol class="breadcrumb"></ol>
+	      		
+	      			<div class="col-row-12 new-title">新增专题</div>
+	       			<div style="line-height:48px;text-indent: 1em;display: inline-block;">
+	       				( 带 <span class="mandatory">*</span> 为必填项 )
+	       				
+	       			</div>
+	      		
+	       		<div class="new-table-box edit-employees-box hide">
+	       		
+	       			
+	       			<table class="table table-bordered">
+	       				<tr>
+	       					<td class="table-key"><span class="mandatory">*</span>专题名称：</td>
+	       					<td class="kongbai"></td>
+	       					<td class="table-key"><span class="mandatory">*</span>策划编辑：</td>
+	       					<td class="kongbai"></td>
+	       					<td class="table-key"><span class="mandatory">*</span>区县：</td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-val"><input type="text" class="width180 text specialName" maxlength="18" placeholder="专题名称" /></td>
+	       					<td class="kongbai" ></td>
+	       					<td class="table-val"><input type="text" class="width180 text editors" maxlength="18" placeholder="策划编辑" /></td> 
+	       					<td class="kongbai"></td>
+	       					<td class="table-val">
+	       					<select class="select area">
+	       						<option value="">请选择</option>
+	       						<option value="东城区">东城区</option>
+	       						<option value="西城区">西城区</option>
+				  				<option value="朝阳区">朝阳区</option>
+				  				<option value="海淀区">海淀区</option>
+				  				<option value="丰台区">丰台区</option>
+				  				<option value="石景山区">石景山区</option>
+				  				<option value="门头沟区">门头沟区</option>
+				  				<option value="房山区">房山区</option>
+				  				<option value="通州区">通州区</option>
+				  				<option value="顺义区">顺义区</option>
+				  				<option value="昌平区">昌平区</option>
+				  				<option value="大兴区">大兴区</option>
+				  				<option value="平谷区">平谷区</option>
+				  				<option value="怀柔区">怀柔区</option>
+				  				<option value="密云区">密云区</option>
+				  				<option value="延庆区">延庆区</option>
+	       					</select></td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-key"><span class="mandatory">*</span>计划上线时间：</td>
+	       						<td class="kongbai"></td>
+	       					<td class="table-key"><span class="mandatory">*</span>搭建平台：</td>
+	       						<td class="kongbai"></td>
+	       					<td class="table-key">页面设计：</td>
+	       				</tr>
+	       					<td class="table-val"><input type="text" class="width180 text date startTime" placeholder="计划上线时间"/></td>
+	       						<td class="kongbai"></td>
+	       					<td class="table-val">
+								<label class="label"><input type="radio" class="wcmVersion" value="WCM6.0" name="wcmVersion" checked="checked" /><span class="label-text float-left">WCM6.0</span></label>
+	       						<label class="label"><input type="radio" class="wcmVersion" value="WCM6.5" name="wcmVersion" /><span class="label-text float-left">WCM6.5</span></label>
+							
+							</td>
+								<td class="kongbai"></td>
+							<td class="table-val">
+	       						<label class="label"><input type="radio" class="pageDesign" value="1" name="pageDesign" checked="checked" /><span class="label-text float-left">需要</span></label>
+	       						<label class="label"><input type="radio" class="pageDesign" value="2" name="pageDesign" /><span class="label-text float-left">不需要</span></label>
+	       					</td>
+	       				<tr>
+	       				
+	       				</tr>
+	       				<td class="table-key"><!-- <span class="mandatory">*</span> -->页面风格：</td>
+	       				<tr>
+	       				</tr>
+	       				<tr>
+	       					
+	       					<td class="table-val ymfg" colspan="7">
+	       						<label><input name="pageStyle" type="checkbox" value="稳重大气" />稳重大气</label>
+								<label><input name="pageStyle" type="checkbox" value="清新自然" />清新自然</label> 
+								<label><input name="pageStyle" type="checkbox" value="简洁大方" />简洁大方</label> 
+								<label><input name="pageStyle" type="checkbox" value="活泼明快" />活泼明快</label> 
+								<label><input name="pageStyle" type="checkbox" value="时尚新颖" />时尚新颖</label>
+								<label><input name="pageStyle" type="checkbox" value="抽像科技" />抽像科技</label>
+								<label><input name="pageStyle" type="checkbox" value="传统经典" />传统经典</label> 
+								<label><input name="pageStyle" type="checkbox" value="精致典雅" />精致典雅</label> 
+								<label><input name="pageStyle" type="checkbox" value="无特殊要求" />无特殊要求</label><br>
+								<label>其他(请描述):<textarea id="pageStyle" style="width:424px;height: 51px;resize:none;margin-left: 13px;"></textarea></label>
+	       					</td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-key"><!-- <span class="mandatory">*</span> -->主色调：</td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-val zsd" colspan="7">
+	       						<label class="label"><input type="radio" value="暖色调" onclick="setReadonly()" checked="checked" class="mainColors" name="mainColors"/>暖色调</label>
+								<label class="label"><input type="radio" value="冷色调" onclick="setReadonly()" class="mainColors" name="mainColors"/>冷色调</label>
+								<label class="label"><input type="radio" value="无特殊要求" onclick="setReadonly()" class="mainColors" name="mainColors"/>无特殊要求</label>
+								<label class="label"><input type="radio" onclick="revokeReadonly()" id="zd" name="mainColors"/>
+								指定色调:</label><input type="text" readonly="readonly" id="colorTest"/>
+	       					</td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-key">flash设计：</td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-val">
+	       						<label class="label"><input type="radio" class="flashDesign" value="1" name="flashDesign" checked="checked" /><span class="label-text float-left">需要</span></label>
+	       						<label class="label"><input type="radio" class="flashDesign" value="2" name="flashDesign" /><span class="label-text float-left">不需要</span></label>
+	
+	       					</td>
+	       					
+	       				
+	       				</tr>
+	       				<tr>
+	       					<td class="table-key"><!-- <span class="mandatory">*</span> -->专题上线所需图片：</td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-val  ztsx" colspan="7">
+	       						<label><input name="picture" type="checkbox" value="首都文明网专题区logo 185*52" />首都文明网专题区logo 185*52</label>
+								<label><input name="picture" type="checkbox" value="首都文明网新闻图 500*375" />首都文明网新闻图 500*375</label> 
+								<label><input name="picture" type="checkbox" value="首都文明网banner 1002*100" />首都文明网banner 1002*100</label> 
+								<label><input name="picture" type="checkbox" value="北京站/东城/朝阳新闻图 600*290" />北京站/东城/朝阳新闻图 600*290</label> 
+								<label style="margin-left: 40px;"><input name="picture" type="checkbox" value="北京站/东城/朝阳专题区logo 235*61" />北京站/东城/朝阳专题区logo 235*61</label>
+								<label style="margin-left: 0px;"><input name="picture" type="checkbox" value="北京站banner 980*152" />北京站banner 980*152</label>
+								<label><input name="picture" type="checkbox" value="联盟东城/朝阳banner 980*156" />联盟东城/朝阳banner 980*156</label> 
+								<label style="margin-left: 51px;"><input name="picture" type="checkbox" value="首都之窗报送197*64 和521*219" />首都之窗报送197*64 和521*219</label> 
+								<label style="margin-left: 29px;margin-right: 127px;"><input name="picture" type="checkbox" value="联盟报送 165*110" />联盟报送 165*110</label>
+								<label><input name="picture" type="checkbox" value="浮标" />浮标</label> 
+								<label><input name="picture" type="checkbox" value="弹出窗口" />弹出窗口</label>
+								<label style="margin-right: 5px;">其他:</label> 
+								<textarea id="picture" style="width:409px;height: 29px;resize:none;"></textarea>
+	       					</td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-key">功能模块程序开发：</td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-val">
+	       						<label class="label"><input type="radio" class="server" value="1" onclick="needServer()" name="server"/><span class="label-text float-left">需要</span></label>
+	       						<label class="label"><input type="radio" class="server" value="2" onclick="noNeedServer()" checked="checked" name="server"/><span class="label-text float-left">不需要</span></label>
+	       					</td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-key "><!-- <span class="mandatory">*</span> -->需要开发内容：</td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-val xykfnr" colspan="7">
+	       						<label><input name="serverContent" type="checkbox" disabled="disabled" value="特殊页面效果" />特殊页面效果</label>
+								<label><input name="serverContent" type="checkbox" disabled="disabled" value="留言板" />留言板</label> 
+								<label><input name="serverContent" type="checkbox" disabled="disabled" value="调查" />调查</label> 
+								<label><input name="serverContent" type="checkbox" disabled="disabled" value="投票" />投票</label> 
+								<label><input name="serverContent" type="checkbox" disabled="disabled" value="论坛" />论坛</label>
+								<label><input name="serverContent" type="checkbox" disabled="disabled" value="微博" />微博</label>
+								<label><input name="serverContent" type="checkbox" disabled="disabled" value="视频播放" />视频播放</label> 
+								<label><input name="serverContent" type="checkbox" disabled="disabled" value="上传提交" />上传提交</label> 
+								<label><input name="serverContent" type="checkbox" disabled="disabled" value="发送邮件" />发送邮件</label><br>
+								<label style="margin-right: 5px;vertical-align: top;"><input name="serverContent" type="checkbox" disabled="disabled" value="其他" />其他(请描述):</label> 
+								<textarea name="serverContent" id="serverContent" disabled="disabled" style="width:579px;height: 28px;resize:none;"></textarea>
+	       					</td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-key" ><!-- <span class="mandatory">*</span> -->附件：</td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-val" colspan="7" style="border: 0px;">
+								<form id="upload" class="upload" action="" method="post" enctype="multipart/form-data">
+									<input type="hidden" class="enclosure">
+									<label>
+	    							<input type="file" id="13" name="enclosure" class="">
+									<input type="button" onclick="enclosureUp()" value="上传" class="anniu shangchaun	">(策划方案、布局图、置标表、需求文档等压缩成zip、rar格式)
+									</label>
+								</form> 
+								<label class="download"><input class="enclosuredownload" type="text" onclick="enclosuredownload()">(点击下载附件)</label>
+	       					</td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-key"><!-- <span class="mandatory">*</span> -->其他说明：</td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-val  qtsm" colspan="7" style="border: 0px;">
+	       						<textarea class="other" style="width:858px;height: 71px;resize:none;"></textarea>
+	       					</td>
+	       				</tr>
+	      				<tr class="guanli">
+	      					<td colspan="8">	
+		       				<table class="table table-bordered">
+		       				<tr>
+		       				<td class='table-key'>设计稿：</td>
+		       				</tr>
+		       				<tr>
+				       				
+				       				<td class='table-val' colspan="3">
+				       					<div class="col-sm-12 upload-pic" id="uploader">
+				       					<div class="queueList">
+											<div id="dndArea" class="placeholder">
+												<div id="filePicker"></div>
+												<p>单次最多可选10张</p>
+											</div>
+										</div>
+										<div class="statusBar" style="display:none;">
+											<div class="progress">
+												<span class="text">0%</span>
+												<span class="percentage"></span>
+											</div><div class="info"></div>
+											<div class="btns">
+												<div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
+											</div>
+											<input type="hidden"  id="picPaths" name="picPaths" value="" ></input>
+											<input type="hidden"  id="picDescs" name="picDescs" value="" ></input>
+										</div> 
+										</div>
+				       				</td>
+				       			
+				       			</tr>
+			       				<tr><td class='table-key'>设计分配：</td>
+			       				<td class='table-key'>设计用时：</td>
+			       					</tr>
+				       			<tr>
+			       				<td class='table-val' style="border:0px;width: 35%;"><select class='form-control select empsj'><option value=''>请选择人员</option></select></td><td class='table-val bkkd' ><input type='text' class='width180 text sjTime' maxlength='18' placeholder='设计用时' /></td>
+			       				</tr>
+			       				
+								<tr>
+								<td class='table-key'>前端分配：</td>
+								<td class='table-key'>前端用时：</td>
+								</tr>
+				       			<tr>
+				       			<td class='table-val' style="border:0px;"><select class='form-control select empqd'><option value=''>请选择人员</option></select></td><td class='table-val bkkd'><input type='text' class='width180 text qdTime' maxlength='18' placeholder='前端用时' /></td>
+				       			</tr>
+								<tr>
+								<td class='table-key'>后端分配：</td>
+								<td class='table-key'>后端用时：</td>
+								</tr>
+				       			<tr>
+				       			<td class='table-val' style="border:0px;"><select class='form-control select emphd'><option value=''>请选择人员</option></select></td><td class='table-val bkkd'><input type='text' class='width180 text hdTime' maxlength='18' placeholder='后端用时' /></td></tr>
+								<tr><td class='table-key'>专题状态：</td>
+								</tr>
+				       			<tr>
+				       			<td class='table-val' style="border:0px;">
+									<select class='select state' onchange='setCompleteTime()'>
+									<option value=''>请选择</option>
+									<option value='0'>申请</option>
+									<option value='1'>进行中</option>
+									<option value='2'>已完成</option>
+									<option value='3'>关闭</option>
+									</select>
+									</td>
+								</tr>
+								<tr><td class='table-key'>实际完成时间：</td>
+								</tr>
+				       			<tr>
+				       			<td class='table-val'><input type='text' class='width180 text date completeTime' placeholder='实际完成时间' onclick='getWdatePicker()'/></td></tr>
+							</table>
+							</td>
+						</tr>
+	       				<tr>
+	       					<td style="text-align:center;    border: 0px;" colspan="7" ><input type="hidden" id="hiddenId"><input type="hidden" id="hiddenTime" value=""/><button type="button" class="btn btn-info td-add-btn" onclick="saveOrModifySpecialInfo()" style="position: relative;"><span class="glyphicon glyphicon-th"></span>保存或修改专题信息</button></td>
+	       				</tr>
+	       			</table>
+	       		</div>
+        	</div>
+			<footer>北京市三思益安科技有限责任公司 <a href="http://www.ssya.net" target="_blank">www.ssya.net</a></footer>
+       	</div>
+    </body>
+    <script type="text/javascript" src="./imageupload/upload.js"></script>
+</html>

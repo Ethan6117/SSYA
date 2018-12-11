@@ -1,0 +1,199 @@
+var moduleCode = '05002';
+
+function initFun() {
+	if (secure.find) {
+		dialog = BootstrapDialog.loading();
+		findListInfo();
+	}
+	if (!secure.add) {
+		$('button.add-btn').remove();
+	}
+	if (secure.add) {
+		$('button.add-btn').removeClass('hide');
+	}
+}
+/*
+ * 获取项目列表 
+ * . [K]
+ */
+var select="1";
+function findListInfo() {
+	$.post('mgr/plan/findPlanOverviewList', {
+		page : page,
+		year : $(".year").val()
+	}, function(data) {
+		dialog.close();
+		var tbody = $('tbody.tbody').empty();
+		if (!$.isSuccess(data)) return;
+		$.each(data.body, function(i, v) {
+			$('<tr></tr>')
+			.append($('<td></td>').append(v.year))
+			.append($('<td></td>').append("W"+v.weekOfYear))
+			.append($('<td></td>').append(v.date))
+			.append($('<td></td>').append(analyzeBtns(v)))
+			.appendTo(tbody);
+			if(v.year!=select&&select!=0){
+				$(".year").append("<option value='"+v.year+"'>"+v.year+"</option>")
+				select=v.year;
+			}
+		});
+		select="0";
+	}, 'json');
+	$.post('mgr/plan/findPlanOverviewCount', {
+		page : page,
+		year : $(".year").val()
+	}, function(data) {
+		$.analysisPage(data.body);
+	}, 'json');
+}
+
+function showPlanInfo(date, state){
+	if (!date||!state) return;
+	window.location.href=("./plan.html?moduleCode=05002&date=" + date + "&state=" + state);
+}
+
+/*
+ * 分析操作按钮 
+ * . [K]
+ */
+function analyzeBtns(v) {
+	var btns = "";
+	btns += secure.find ? "<button type='button' class='btn btn-primary btn-xs' onclick='showPlanInfo(" + v.year+v.weekOfYear + "," + v.state + ")'><span class='glyphicon glyphicon-pencil'></span>"+v.strState+"</button>" : "";
+	return btns;
+}
+/*
+ * 显示部门员工列表, 选择经理 
+ * . [K]
+ */
+/*function showManagerList(principal, deptId) {
+	if (!deptId) return;
+	dialog = BootstrapDialog.loading();
+	departmentId = deptId;
+	$.getJSON('mgr/department/findDeptEmplList', {deptId : deptId}, function(data) {
+		dialog.close();
+		if (!$.isSuccess(data)) return;
+		var list = $('select.principal-list').empty().append('<option value=0>请选择...</option>');
+		$.each(data.body, function(i, v) {
+			$('<option value=' + v.id + '></option>').append(v.name).appendTo(list);
+		});
+		BootstrapDialog.showModel($('div.set-principal-box'));
+	});
+}*/
+/*
+ * 设置部门经理 
+ * . [K]
+ */
+/*function setPrincipal() {
+	$.getJSON('mgr/department/setPrincipal', {
+		deptId : departmentId,
+		emplId : $('select.principal-list').val()
+	}, function(data) {
+		if (!$.isSuccess(data)) return;
+		//BootstrapDialog.msg(data.body, BootstrapDialog.TYPE_SUCCESS);
+		var bdg=BootstrapDialog.show({
+			title:"提示信息",
+			type:BootstrapDialog.TYPE_SUCCESS,
+			closable : true,
+			message : data.body
+		});
+		setTimeout(function(){
+			bdg.close();
+		},1500);
+		BootstrapDialog.hideModel($('div.set-principal-box'));
+		findListInfo();
+	});
+}*/
+/*
+ * 提示并确定删除项目信息 
+ * . [K]
+ */
+/*function hintDelete(id) {
+	if (!id) return;
+	BootstrapDialog.confirm("请确认是否要删除该项目?", function(result) {
+		if (!result) return;
+		dialog = BootstrapDialog.isSubmitted();
+		$.getJSON('mgr/project/deleteProject', {proId : id}, function(data) {
+			dialog.close();
+			if (!$.isSuccess(data)) return;
+			findListInfo();
+			//BootstrapDialog.msg(data.body, BootstrapDialog.TYPE_SUCCESS);
+			var bdg=BootstrapDialog.show({
+				title:"提示信息",
+				type:BootstrapDialog.TYPE_SUCCESS,
+				closable : true,
+				message : data.body
+			});
+			setTimeout(function(){
+				bdg.close();
+			},1500);
+		});
+	});
+}*/
+/*
+ * 显示部门编辑窗口 
+ * . [K]
+ */
+/*function showModifyBox(proId) {
+	$('.empty').removeClass('empty');
+	if (!proId) return;
+	window.open('./project_new.html?moduleCode=05001&proId='+proId);
+}*/
+/*
+ * 修改部门信息
+ * . [K]
+ */
+/*var dept = {};
+function modifyDept(deptId) {
+	if (!deptId) return;
+	$.isSubmit = true;
+	dept.deptId = deptId;
+	dept.deptName = $.verifyForm($('input.modifyName'), true);
+	dept.deptDesc = $.verifyForm($('textarea.modifyDesc'), false);
+	if (!$.isSubmit) return;
+	dialog = BootstrapDialog.isSubmitted();
+	$.post('mgr/department/modifyDepartment', {
+		deptId : dept.deptId,
+		name : dept.deptName,
+		desc : dept.deptDesc
+	}, function(data) {
+		dialog.close();
+		if (!$.isSuccess(data)) return;
+		BootstrapDialog.hideModel($('div.modify-box'));
+		//BootstrapDialog.msg(data.body, BootstrapDialog.TYPE_SUCCESS);
+		var bdg=BootstrapDialog.show({
+			title:"提示信息",
+			type:BootstrapDialog.TYPE_SUCCESS,
+			closable : true,
+			message : data.body
+		});
+		setTimeout(function(){
+			bdg.close();
+		},1500);
+		findListInfo();
+	}, 'json');
+}*/
+/*
+ * 新窗口打开新建项目页面
+ * . [K]
+ */
+/*function newInternshipProject() {
+	window.open('./project_new.html?moduleCode=05001');
+}*/
+/*
+ * 添加部门信息 
+ * . [K]
+ */
+/*function addDepartment() {
+	$.isSubmit = true;
+	dept.deptName = $.verifyForm($('input.addName'), true);
+	dept.deptDesc = $.verifyForm($('textarea.addDesc'), false);
+	if (!$.isSubmit) return;
+	dialog = BootstrapDialog.isSubmitted();
+	$.post('mgr/department/addDepartment', {name : dept.deptName,desc : dept.deptDesc}, function(data) {
+		dialog.close();
+		if (!$.isSuccess(data)) return;
+		BootstrapDialog.hideModel($('div.add-box'));
+		BootstrapDialog.msg(data.body, BootstrapDialog.TYPE_SUCCESS);
+		findListInfo();
+	}, 'json');
+}*/

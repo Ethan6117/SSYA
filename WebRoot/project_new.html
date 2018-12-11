@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+        <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css" />
+		<link type="text/css" rel="stylesheet" href="./css/bootstrap-dialog.min.css">
+        <link type="text/css" rel="stylesheet" href="./css/commone.css" />
+        <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./js/bootstrap-dialog.min.js"></script>
+        <script type="text/javascript" src="./js/bootstrap-pagy.min.js"></script>
+        <script type="text/javascript" src="./js/common.js"></script>
+        <script type="text/javascript" src="./js/project_info.js"></script>
+        <!--[if lt IE 9]>
+            <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]--> 
+        <style>
+         td.participants ul{
+         padding:0;
+         }
+         td.participants ul li{
+         list-style:none;
+         float:left;
+         width:53px;
+         }
+        </style>
+    </head>
+    <body>
+        <div class="nav navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+               <a href="./index.html" class="navbar-brand"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a>
+               <ul class="nav navbar-nav" id="nav-box-ul"></ul>
+               <ul class="nav navbar-nav pull-right">
+               		<li><a href="javascript:void(0)" class="acctInfo" data-toggle="modal" ><span class="glyphicon glyphicon-user"></span>&nbsp;</a></li>
+                	<li><a href="javascript:void(0)" onclick="exit()">注销</a></li>
+               </ul>
+            </div>
+        </div>
+        <div class="container main hide">
+        	<div class="row">
+	      		<ol class="breadcrumb"></ol>
+	       		<div class="new-table-box edit-employees-box hide">
+	       			<div class="col-row-12 new-title">新增项目</div>
+	       			<div style="line-height:48px;">
+	       				带 <span class="mandatory">*</span> 为必填项
+	       			</div>
+	       			<table class="table table-bordered">
+	       				<tr>
+	       					<td class="table-key"><span class="mandatory">*</span>项目名称：</td>
+	       					<td class="table-val"><input type="text" class="width180 text projectName" maxlength="18" placeholder="项目名称" /></td>
+	       					<td class="table-key">客户名称：</td>
+	       					<td class="table-val"><input type="text" class="width180 text client" maxlength="18" placeholder="客户名称" /></td>
+	       					<td class="table-key">合作方：</td>
+	       					<td class="table-val"><input type="text" class="width180 text partner" maxlength="18" placeholder="合作方" /></td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-key">客户联系人：</td>
+	       					<td class="table-val"><input type="text" class="width180 text linkman" placeholder="客户联系人" /></td>
+	       					<td class="table-key">客户电话：</td>
+	       					<td class="table-val"><input type="text" class="width180 text phone" maxlength="18" placeholder="客户电话" /></td>
+	       					<td class="table-key"><span class="mandatory">*</span>我方负责人：</td>
+	       					<td class="table-val"><select class="select manager"><option value="">请选择</option></select>	       					</td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-key">我方项目参与人员：</td>
+	       					<td class="table-val participants"><ul></ul></td>
+	       					<td class="table-key">访问方式：</td>
+	       					<td class="table-val"><input type="text" class="width180 text domainName" placeholder="访问方式" /></td> 
+	       					<td class="table-key">服务器及登录方式：</td>
+	       					<td class="table-val"><input type="text" class="width180 text serverAndLogin" placeholder="服务器及登录方式" /></td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-key">源文件存放地址：</td>
+	       					<td class="table-val" colspan="5"><input type="text" class="width180 text path" placeholder="源文件存放地址" /></td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-key">项目概述：</td>
+	       					<td class="table-val" colspan="5"><textarea class="form-control addDesc summary" rows="3" placeholder="项目概述" maxlength="500"></textarea></td>
+	       				</tr>
+	       				<tr>
+	       					<td class="table-key">主管领导：</td>
+	       					<td class="table-val"><input type="text" class="width180 text boss" maxlength="18" placeholder="主管领导" /></td>
+	       					<td class="table-key"><span class="mandatory">*</span>项目状态：</td>
+	       					<td class="table-val"><select class='select state' >
+									<option value='0'>请选择</option>
+									<option value='1'>进行中</option>
+									<option value='2'>跟进</option>
+									<option value='3'>完成</option>
+									<option value='4'>作废</option>
+									</select></td>
+	       				</tr>
+	       				<tr>
+	       					<td style="text-align:center;    border: 0px;" colspan="7" ><button type="button" class="btn btn-info td-add-btn" onclick="saveOrModifyProjectInfo()" style="position: relative;"><span class="glyphicon glyphicon-th"></span>保存或修改项目信息</button></td>
+	       				</tr>
+	       			</table>
+	       		</div>
+        	</div>
+			<footer>北京市三思益安科技有限责任公司 <a href="http://www.ssya.net" target="_blank">www.ssya.net</a></footer>
+       	</div>
+    </body>
+</html>

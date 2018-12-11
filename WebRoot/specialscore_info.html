@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+p{    font-size: 14px;
+    margin-bottom: 0px;}
+.fr{        float: right;
+    position: relative;
+    top: -29px;
+    right: 63px;}
+    .fenshu {
+        width: 168px;}
+        #yjjy{    height: 58px;
+    width: 192px;
+        resize: none;}
+    .yj{    margin-top: 20px;
+    width: 192px;}
+    .modal-header{      text-align: center;
+    height: 38px;
+    font-size: 20px;
+    line-height: 38px;
+    padding: 0;
+    }
+
+</style>
+  <head>
+    <title>查看评分</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+  </head>
+  <script>
+  
+  var specId=$(".info").attr("id");
+  findSpecialScoreInfo(specId);
+  
+  /*
+  *获得评分信息
+  */
+  function findSpecialScoreInfo(specId){
+	if(!specId) return;
+	$.getJSON('./mgr/specialScore/findSpecialScoreByspecId',{specId:specId}, function(data){
+		//if(!$.isSuccess(data)) return;
+		var info = data.body;
+		$('.score').val(info.score);
+		$('.opinion').html(info.opinion);
+		$('a.ainfoimg').attr("href",info.infoimg);
+		$('img.infoimg').attr("src",info.infoimg);
+	});
+  };
+  
+  </script>
+  <body>
+  
+    <p>分数：</p>
+    <input type="text" class="fenshu score" readonly="readonly">
+   <div class="fr" >
+   <p>信息记录：</p>
+   <a class="ainfoimg" href="" target="_blank"><img style="width: 200px;height: 100px;" src="" class="infoimg"></a>
+   </div>    <p class="yj">意见及建议：</p>
+   <textarea id="yjjy" class="opinion" readonly="readonly"></textarea>
+    
+  </body>
+</html>

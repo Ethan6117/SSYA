@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>WebUploader</title>
+    <link rel="stylesheet" type="text/css" href="css/webuploader.css" />
+    <link rel="stylesheet" type="text/css" href="css/photos_sysc.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="css/nav.css" />
+</head>
+<body>
+    <div id="wrapper">
+    <form name="myform" id="myform" action="/exhibit/ExhibitConfirm"  method="post" class="form-horizontal J_ajaxForms" enctype="multipart/form-data">
+        <div id="container">
+            <!--头部，相册选择和格式选择-->
+
+            <div id="uploader">
+           
+           <div class="white-pink">
+						
+							<label class="bgcmain">
+								请申请合作的个人摄影师／策展人填写
+							</label>
+							<label>
+								<span>联系人 :</span>
+								<input id="name" type="text" name="name" placeholder="请填写联系人" />
+							</label>
+							<label>
+								<span>联系电话 :</span>
+								<input id="tel" type="text" name="tel" placeholder="请填写联系" />
+							</label>
+							<label>
+								<span>邮箱 :</span>
+								<input id="email" type="email" name="email" placeholder="邮箱地址" />
+							</label>
+							<label>
+								<span>个人/机构 :</span>
+								<input type="radio" value="1" name="type" checked="checked"> 个人
+								<input type="radio" value="2" name="type"> 机构
+								<br />
+								<br />
+							</label>
+							<label>
+								<span>国家 :</span>
+								<input id="country" type="text" name="country" placeholder="请填写国家" />
+							</label>
+							<label>
+								版权信息：展览是否具有肖像许可权和所有物权?
+								<br />
+								<input type="radio" value="1" name="permit" checked="checked"> 具有肖像许可权
+								<input type="radio" value="2" name="permit"> 具有所有物权
+								<input type="radio" value="3" name="permit"> 具有肖像许可权和所有物权
+								<input type="radio" value="4" name="permit"> 不具有肖像许可权和所有物权
+								<br />
+								<br />
+							</label>
+							<label>
+								版权信息：展览作品是否拥有图像著作权
+								<br />
+								<input type="radio" value="1" name="copyright" checked="checked"> 具有图像著作权
+								<input type="radio" value="2" name="copyright"> 不具有图像著作权
+								<br />
+								<br />
+							</label>
+							<label>
+								有何特殊拍摄权利或优势
+								<br />
+								<textarea class="special" name="special"> </textarea>
+							</label>
+							<label>
+								是否与其他展览代理机构合作
+								<br />
+								<textarea class="special" name="distributer"> </textarea>
+							</label>
+							<label class="bgcmain">
+								请提交展览素材的个人摄影师／策展人填写以下内容
+							</label>
+							<label>
+								<span>*展览名称 :</span>
+								<input id="title" type="text" name="title" required placeholder="请填写展览名称" />
+							</label>
+							<label>
+								<span>*展览介绍 :</span>
+								<textarea name="excerpt" id="excerpt" placeholder="不少于200字介绍" required> </textarea>
+							</label>
+							<label>
+								<span>*展览前言 :</span>
+								<textarea name="photographerjs" id="photographerjs" required> </textarea>
+							</label>
+							<label>
+								<span>摄影师／策展人介绍 :</span>
+								<textarea name="plannerjs"> </textarea>
+							</label>
+							<label>
+								<span>*展览规模 :</span>
+								<input id="quantity" type="text" name="quantity" required placeholder="请填写作品数量" />
+							</label>
+							<label>
+								<span>*展览题材 :</span>
+								<input id="theme" type="text" name="theme" required placeholder="如风光、人文、纪实、建筑、创意、艺术" />
+							</label>
+							<label>
+								<span>*展览形式 :</span>
+								<input id="modality" type="text" name="modality" required placeholder="如图片、多媒体" />
+							</label>
+							<label>
+								<span>展陈设计 :</span>
+								<p style="padding-top: 8px;">上传图片、与展览作品小样一起上传</p>
+								
+							</label>
+							<label>
+								<span>*作品信息 :</span>
+								<input id="info" type="text" name="info" required placeholder="作品名称请以“名称＋编号”命名" />
+							</label>
+							<label>
+								<span>拍摄器材 :</span>
+								<input id="equipment" type="text" name="equipment" placeholder="拍摄器材" />
+							</label>
+							<label>
+								<span>展览经历 :</span>
+								<textarea name="pexhibition"> </textarea>
+								<p>以往展览经历，时间、地点</p>
+							</label>
+						
+						
+							
+							<label>
+								请将希望被代理的展览所有作品小样图随此表格提交组委会审核（小样图规格:500kb）
+								<br />
+								<br />
+							</label>
+							<label>
+								摄影师咨询通道:
+								<br /> 电话:010-59802074 Email:photobeijing@gehua.com
+							</label>
+
+							<label>
+								<span>&nbsp;</span>
+								<div class="form-actions">
+									<button class="btn4 btn-primary btn_submit J_ajax_submit_btn" type="submit">提交</button>
+								</div>
+								<!--<button class="btn btn-primary btn_submit J_ajax_submit_btn" type="submit">提交</button>-->
+								<!--<input type="submit" class="button" value="提交" />-->
+							</label>
+							<!--<label>
+								附件：
+								<br /> 个人摄影师／策展人合作申请表
+							</label>-->
+					
+
+					</div>
+           
+           
+           
+           
+           
+                <div class="queueList">
+                    <div id="dndArea" class="placeholder">
+                        <div id="filePicker"></div>
+                        <p>单次最多可选300张</p>
+                    </div>
+                </div>
+                <div class="statusBar" style="display:none;">
+                    <div class="progress">
+                        <span class="text">0%</span>
+                        <span class="percentage"></span>
+                    </div><div class="info"></div>
+                    <div class="btns">
+                        <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="dist/webuploader.js"></script>
+    <script type="text/javascript" src="upload.js"></script>
+</body>
+</html>
