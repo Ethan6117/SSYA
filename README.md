@@ -1,2 +1,2 @@
 # ssya
-A website
+:-)
